@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+{
+	"name": "rstudio",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"runArgs": [
+		"-e DISABLE_AUTH=true"
+	],
+	"overrideCommand": false,
+	// Forward rstudio
+	"forwardPorts": [
+		8787
+	],
+	"portsAttributes": {
+		"8787": {
+			"label": "rstudio",
+			"requireLocalPort": true,
+			"onAutoForward": "ignore"
+		}
+	},
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"python.pythonPath": "/opt/conda/bin/python",
+		"r.plot.useHttpgd": true,
+		"r.rterm.linux": "/usr/local/bin/radian"
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ikuyadeu.r"
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "rstudio"
+}
